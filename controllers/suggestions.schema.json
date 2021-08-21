@@ -1,0 +1,30 @@
+{
+  "settings": {
+    "analysis": {
+      "filter": {
+        "autocomplete_filter": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 5
+        }
+      },
+      "analyzer": {
+        "autocomplete_analyzer": {
+          "type": "custom",
+          "tokenizer": "standard",
+          "filter": ["lowercase", "autocomplete_filter"]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "suggestions": {
+      "properties": {
+        "suggest": {
+          "type": "text",
+          "analyzer": "autocomplete_analyzer"
+        }
+      }
+    }
+  }
+}
